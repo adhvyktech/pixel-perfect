@@ -73,7 +73,7 @@ export function Header() {
           ))}
         </nav>
         <div className="space-y-1 px-5 py-6 text-sm text-stone">
-          <a href={`tel:${site.phones[0].replace(/\s/g, "")}`} tabIndex={open ? 0 : -1} className="block">{site.phones[0]}</a>
+          <a href={`tel:${site.phones[0]!.replace(/\s/g, "")}`} tabIndex={open ? 0 : -1} className="block">{site.phones[0]}</a>
           <a href={`mailto:${site.email}`} tabIndex={open ? 0 : -1} className="block">{site.email}</a>
         </div>
       </div>

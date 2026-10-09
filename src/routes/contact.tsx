@@ -90,7 +90,7 @@ function Contact() {
                 <p className="mt-6 max-w-lg border-l-2 border-brick pl-4 text-sm">
                   Online enquiries aren’t connected yet, so your message was <strong>not sent</strong>. Please email{" "}
                   <a href={`mailto:${site.email}`} className="text-teal underline">{site.email}</a> or call{" "}
-                  <a href={`tel:${site.phones[0].replace(/\s/g, "")}`} className="text-teal underline">{site.phones[0]}</a>.
+                  <a href={`tel:${site.phones[0]!.replace(/\s/g, "")}`} className="text-teal underline">{site.phones[0]}</a>.
                 </p>
               )}
             </div>
@@ -101,7 +101,7 @@ function Contact() {
   );
 }
 
-function Field({ name, label, type = "text", error, className, autoComplete }: { name: string; label: string; type?: string; error?: string; className?: string; autoComplete?: string }) {
+function Field({ name, label, type = "text", error, className, autoComplete }: { name: string; label: string; type?: string; error?: string | undefined; className?: string; autoComplete?: string }) {
   return (
     <div className={className}>
       <label htmlFor={name} className="label text-muted-foreground">{label}</label>

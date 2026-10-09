@@ -51,8 +51,8 @@ export const projects: Project[] = [
   slug: slugify(title),
   title,
   category,
-  cover: keys[i % keys.length],
-  gallery: [keys[(i + 1) % keys.length], keys[(i + 2) % keys.length], keys[(i + 3) % keys.length]],
+  cover: keys[i % keys.length]!,
+  gallery: [1, 2, 3].map((d) => keys[(i + d) % keys.length]!),
   featured: i < 4 && category === "Residential",
 }));
 

@@ -54,7 +54,7 @@ export function FeaturedProjects() {
 /* ---------- Services: architectural index ---------- */
 export function ServiceIndex({ tone = "light" }: { tone?: "light" | "dark" }) {
   const [active, setActive] = useState(0);
-  const s = services[active];
+  const s = services[active]!;
   return (
     <section className={cn("px-5 py-24 md:px-10 md:py-36", tone === "light" ? "bg-paper text-graphite" : "bg-graphite text-paper")}>
       <div className="grid gap-12 md:grid-cols-12">
@@ -111,7 +111,7 @@ export function Process() {
       <div className="relative">
         <Label className="text-teal">04 — Process</Label>
         <h2 className="display-lg mt-6 max-w-[12ch]">From first thought to <span className="serif-accent text-teal">final form.</span></h2>
-        <div className="mt-20 flex items-center gap-4"><Dots count={3} active={active} k={active} /><span className="label text-stone">Stage {steps[active].n}</span></div>
+        <div className="mt-20 flex items-center gap-4"><Dots count={3} active={active} k={active} /><span className="label text-stone">Stage {steps[active]!.n}</span></div>
         <ol className="mt-8 grid border-t border-line-dark md:grid-cols-3">
           {steps.map((s, i) => (
             <li key={s.n} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)} tabIndex={0}
