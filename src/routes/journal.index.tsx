@@ -18,7 +18,7 @@ export const Route = createFileRoute("/journal/")({
 });
 
 function Journal() {
-  const [lead, second, ...rest] = articles;
+  const lead = articles[0]!; const second = articles[1]!; const rest = articles.slice(2);
   return (
     <>
       <PageHero index="07" label="Journal" title={<>Thinking about <span className="serif-accent text-teal">the way we live.</span></>} />

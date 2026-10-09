@@ -120,7 +120,7 @@ function Studio() {
 }
 
 function Journal() {
-  const [lead, ...rest] = articles;
+  const lead = articles[0]!; const rest = articles.slice(1);
   return (
     <section className="bg-graphite px-5 py-24 text-paper md:px-10 md:py-36">
       <Label className="text-teal">07 — Journal</Label>
