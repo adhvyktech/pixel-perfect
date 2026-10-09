@@ -22,6 +22,7 @@ src/assets/client-projects/
 .dev.vars
 
 # Editor directories and files
+.lovable/
 .vscode/*
 !.vscode/extensions.json
 .idea

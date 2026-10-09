@@ -1,24 +1,43 @@
-# Pixel Perfect
+# D’Dezignz Interiors
 
-Implement exactly the screenshot and nothing else
+Official website and digital portfolio for **D’Dezignz Interiors** — Interior Design Studio based in Bengaluru, Karnataka.
 
-This project was built with [Lovable](https://lovable.dev).
+## Tech Stack
 
-## Build with Lovable
+- **Framework**: React 19 + TypeScript
+- **Bundler**: Vite
+- **Styling**: Tailwind CSS v4, tw-animate-css
+- **UI Components**: Radix UI primitives, Lucide Icons, Embla Carousel, Sonner
+- **Form Handling**: React Hook Form, Zod validation, Web3Forms API integration
+- **Routing**: React Router v7
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/060228a4-8581-492c-970e-57f7e51e4fcb).
+## Getting Started
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+### Prerequisites
 
-## Development
+- Node.js (v18+ recommended)
+- npm or bun
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+### Installation
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+# Clone repository
+git clone https://github.com/ddezignzinterior/ddezignz.git
+cd ddezignz
+
+# Install dependencies
+npm install
+
+# Start local development server
 npm run dev
+```
+
+### Production Build
+
+```sh
+# Generate production bundle
+npm run build
+
+# Preview build locally
+npm run preview
 ```
