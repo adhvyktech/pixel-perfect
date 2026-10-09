@@ -9,7 +9,7 @@ export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
     const i = projects.findIndex((p) => p.slug === params.slug);
     if (i < 0) throw notFound();
-    return { project: projects[i], next: projects[(i + 1) % projects.length], index: i };
+    return { project: projects[i]!, next: projects[(i + 1) % projects.length]!, index: i };
   },
   head: ({ loaderData }) => ({
     meta: loaderData
@@ -41,9 +41,9 @@ function ProjectDetail() {
 
       <section className="bg-paper px-5 py-24 md:px-10 md:py-32">
         <div className="grid gap-6 md:grid-cols-12">
-          <Reveal className="md:col-span-8"><img src={imageOf(project.gallery[0])} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" /></Reveal>
-          <Reveal className="md:col-span-4 md:self-end" delay={100}><img src={imageOf(project.gallery[1])} alt="" loading="lazy" className="aspect-[4/5] w-full object-cover" /></Reveal>
-          <Reveal className="md:col-span-6 md:col-start-4" delay={150}><img src={imageOf(project.gallery[2])} alt="" loading="lazy" className="aspect-[3/2] w-full object-cover" /></Reveal>
+          <Reveal className="md:col-span-8"><img src={imageOf(project.gallery[0]!)} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" /></Reveal>
+          <Reveal className="md:col-span-4 md:self-end" delay={100}><img src={imageOf(project.gallery[1]!)} alt="" loading="lazy" className="aspect-[4/5] w-full object-cover" /></Reveal>
+          <Reveal className="md:col-span-6 md:col-start-4" delay={150}><img src={imageOf(project.gallery[2]!)} alt="" loading="lazy" className="aspect-[3/2] w-full object-cover" /></Reveal>
         </div>
         <p className="mx-auto mt-16 max-w-xl border-l-2 border-brick pl-5 text-muted-foreground">
           Project description, scope and photography for {project.title} are being prepared and will be added here.

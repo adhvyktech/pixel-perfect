@@ -7,7 +7,7 @@ export const Route = createFileRoute("/journal/$slug")({
   loader: ({ params }) => {
     const i = articles.findIndex((a) => a.slug === params.slug);
     if (i < 0) throw notFound();
-    return { article: articles[i], next: articles[(i + 1) % articles.length] };
+    return { article: articles[i]!, next: articles[(i + 1) % articles.length]! };
   },
   head: ({ loaderData }) => ({
     meta: loaderData
