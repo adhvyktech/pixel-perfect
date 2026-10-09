@@ -5,6 +5,7 @@ export const site = {
   email: "deviirtt@gmail.com",
   phones: ["+91 6363738685", "+91 9241812825", "+91 9916556582"],
   address: "Gattahalli, Bengaluru, Karnataka, India",
+  web3formsAccessKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "13d8aa91-792e-47d6-99a6-003f0125b5d8",
   nav: [
     { to: "/", label: "Home" },
     { to: "/about", label: "Studio" },
@@ -29,7 +30,22 @@ export type Project = {
   featured?: boolean;
 };
 
-const keys: ImageKey[] = ["living", "bedroom", "kitchen", "foyer", "study", "hero"];
+const keys: ImageKey[] = [
+  "living",
+  "bedroom",
+  "kitchen",
+  "partition",
+  "foyer",
+  "lounge",
+  "bedroomSuite",
+  "bedroomWardrobe",
+  "residenceLiving",
+  "compactBedroom",
+  "openPlanHall",
+  "craftJoinery",
+  "cabinetryDetail",
+  "storage",
+];
 const slugify = (s: string) =>
   s.toLowerCase().replace(/[’'&]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
@@ -60,15 +76,15 @@ export const imageOf = (k: ImageKey) => images[k];
 
 export type Service = { slug: string; title: string; description: string; image: ImageKey };
 export const services: Service[] = [
-  { slug: "residential", title: "Residential Interiors", description: "Complete home interiors planned around how your household actually lives — layout, storage, materials and light.", image: "living" },
-  { slug: "commercial", title: "Commercial Interiors", description: "Working spaces that are practical for daily use and considered in character.", image: "study" },
+  { slug: "residential", title: "Residential Interiors", description: "Complete home interiors planned around how your household actually lives — layout, storage, materials and light.", image: "residenceLiving" },
+  { slug: "commercial", title: "Commercial Interiors", description: "Working spaces that are practical for daily use and considered in character.", image: "craftJoinery" },
   { slug: "kitchen", title: "Kitchen Design", description: "Kitchens planned for workflow first, then finished with durable, distinctive materials.", image: "kitchen" },
   { slug: "bedroom", title: "Bedroom Design", description: "Calm, restful rooms with well-planned storage and layered lighting.", image: "bedroom" },
-  { slug: "living", title: "Living Room Design", description: "The social centre of the home — composed for comfort, conversation and display.", image: "hero" },
-  { slug: "ceiling", title: "False Ceiling and Lighting", description: "Ceiling forms and lighting that shape the mood and proportion of a room.", image: "living" },
-  { slug: "dresser-study", title: "Dresser and Study", description: "Compact, precise built-ins that make everyday routines easier.", image: "study" },
+  { slug: "living", title: "Living Room Design", description: "The social centre of the home — composed for comfort, conversation and display.", image: "living" },
+  { slug: "ceiling", title: "False Ceiling and Lighting", description: "Ceiling forms and lighting that shape the mood and proportion of a room.", image: "lounge" },
+  { slug: "dresser-study", title: "Dresser and Study", description: "Compact, precise built-ins that make everyday routines easier.", image: "storage" },
   { slug: "foyer", title: "Foyer Design", description: "The first impression of your home, made deliberate.", image: "foyer" },
-  { slug: "renovation", title: "Renovation and Interior Improvements", description: "Reworking existing spaces to function better and feel new again.", image: "kitchen" },
+  { slug: "renovation", title: "Renovation and Interior Improvements", description: "Reworking existing spaces to function better and feel new again.", image: "partition" },
 ];
 
 export const capabilities = [
