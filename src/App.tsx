@@ -10,10 +10,15 @@ import { ArticleDetailPage } from "@/pages/ArticleDetailPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 
+import { LightboxProvider } from "@/context/LightboxContext";
+import { ImageLightbox } from "@/components/lightbox/ImageLightbox";
+
 export function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <LightboxProvider>
+        <ImageLightbox />
+        <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
@@ -26,6 +31,7 @@ export function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      </LightboxProvider>
     </BrowserRouter>
   );
 }

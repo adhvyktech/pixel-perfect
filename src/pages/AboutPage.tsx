@@ -3,6 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Process, Capabilities } from "@/components/site/Sections";
 import { Closing } from "@/components/site/Closing";
 import { Reveal, Label } from "@/components/site/Reveal";
+import { GalleryImage } from "@/components/lightbox/GalleryImage";
 
 const principles = [
   {
@@ -48,13 +49,16 @@ export function AboutPage() {
         <div className="grid gap-12 md:grid-cols-12 md:gap-16 items-start">
           <Reveal className="md:col-span-5 md:sticky md:top-28">
             <div className="relative overflow-hidden border border-line-light/20 shadow-md bg-stone-light">
-              <img
+              <GalleryImage
                 src={deviBalaPortrait}
                 alt="Devi Bala — Founder & Principal Interior Designer of D’Dezignz Interiors"
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 hover:scale-[1.02]"
+                itemTitle="Devi Bala — Founder & Principal Interior Designer"
+                category="Studio Leadership"
+                caption="Devi Bala leading interior concept development and turnkey execution in Bengaluru."
+                badgeLabel="Inspect Portrait"
+                className="aspect-[4/5] object-top"
               />
-              <div className="absolute bottom-0 inset-x-0 bg-graphite/95 backdrop-blur-xs p-5 text-paper border-t border-line-dark/20">
+              <div className="absolute bottom-0 inset-x-0 bg-graphite/95 backdrop-blur-xs p-5 text-paper border-t border-line-dark/20 pointer-events-none">
                 <p className="label text-teal">Founder & Principal Designer</p>
                 <p className="font-display text-lg font-medium mt-1 text-paper">Devi Bala</p>
                 <p className="text-xs text-stone mt-1">D’Dezignz Interiors · Bengaluru, Karnataka</p>
@@ -63,11 +67,14 @@ export function AboutPage() {
 
             {/* Recognition & Keynote Callout */}
             <div className="mt-6 border border-line-light/20 bg-snow p-5 shadow-xs flex items-center gap-4">
-              <img
+              <GalleryImage
                 src={deviBalaAward}
                 alt="Devi Bala industry recognition"
-                loading="lazy"
-                className="size-16 object-cover border border-line-light/20 shrink-0"
+                itemTitle="Devi Bala — Industry Recognition & Keynote"
+                category="Accolades"
+                badgeLabel="View"
+                className="size-16 object-cover"
+                wrapperClassName="size-16 shrink-0 border border-line-light/20"
               />
               <div>
                 <p className="label text-teal text-[0.65rem]">Track Record & Recognition</p>

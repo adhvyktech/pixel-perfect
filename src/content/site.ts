@@ -5,7 +5,7 @@ export const site = {
   email: "deviirtt@gmail.com",
   phones: ["+91 6363738685", "+91 9241812825", "+91 9916556582"],
   address: "Gattahalli, Bengaluru, Karnataka, India",
-  web3formsAccessKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "13d8aa91-792e-47d6-99a6-003f0125b5d8",
+  web3formsAccessKey: (import.meta.env as Record<string, string | undefined>)["VITE_WEB3FORMS_ACCESS_KEY"] || "13d8aa91-792e-47d6-99a6-003f0125b5d8",
   nav: [
     { to: "/", label: "Home" },
     { to: "/about", label: "Studio" },

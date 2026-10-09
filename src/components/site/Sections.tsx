@@ -1,37 +1,72 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { ArrowUpRight, Plus, Minus } from "lucide-react";
+import { ArrowUpRight, Plus, Minus, Maximize2 } from "lucide-react";
 import { projects, services, capabilities, imageOf, type Project } from "@/content/site";
 import { Reveal, Label } from "./Reveal";
 import { Dots } from "./Dots";
 import { cn } from "@/lib/utils";
+import { useLightbox, type LightboxItem } from "@/context/LightboxContext";
 
 /* ---------- Exhibition: large alternating project canvases ---------- */
 export function ProjectCanvas({ project, index }: { project: Project; index: number }) {
+  const { openLightbox } = useLightbox();
   const flip = index % 2 === 1;
+
+  const galleryItems: LightboxItem[] = [
+    {
+      src: imageOf(project.cover),
+      title: `${project.title} — Primary Spatial View`,
+      category: project.category,
+      caption: `Full spatial perspective of ${project.title}.`,
+    },
+    ...project.gallery.map((k, i) => ({
+      src: imageOf(k),
+      title: `${project.title} — View ${i + 2}`,
+      category: project.category,
+      caption: `Interior architectural photography for ${project.title}.`,
+    })),
+  ];
+
   return (
     <Reveal as="article" className={cn("grid items-end gap-6 md:grid-cols-12 md:gap-10", flip && "md:[direction:rtl]")}>
-      <Link
-        to={`/projects/${project.slug}`}
-        className="group relative block overflow-hidden md:col-span-8 [direction:ltr]"
-        aria-label={`View ${project.title}`}
-      >
-        <img
-          src={imageOf(project.cover)}
-          alt={`Interior view of ${project.title}`}
-          loading="lazy"
-          width={1600}
-          height={1072}
-          className="aspect-[4/3] w-full object-cover transition-transform duration-[1.4s] [transition-timing-function:var(--ease-arch)] group-hover:scale-[1.04] md:aspect-[16/10]"
-        />
-        <div className="absolute inset-0 shade-bottom opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        <span className="absolute right-0 top-0 flex size-14 items-center justify-center bg-teal text-snow transition-transform duration-500 group-hover:rotate-45 md:size-20">
-          <ArrowUpRight className="size-6 md:size-8" />
-        </span>
-        <span className="label absolute bottom-4 left-4 bg-graphite/85 backdrop-blur-xs px-3 py-1.5 text-paper/80 border border-line-dark/20">
-          {project.category}
-        </span>
-      </Link>
+      <div className="group relative block overflow-hidden md:col-span-8 [direction:ltr]">
+        <Link
+          to={`/projects/${project.slug}`}
+          className="block"
+          aria-label={`View ${project.title}`}
+        >
+          <img
+            src={imageOf(project.cover)}
+            alt={`Interior view of ${project.title}`}
+            loading="lazy"
+            width={1600}
+            height={1072}
+            className="aspect-[4/3] w-full object-cover transition-transform duration-[1.4s] [transition-timing-function:var(--ease-arch)] group-hover:scale-[1.04] md:aspect-[16/10]"
+          />
+          <div className="absolute inset-0 shade-bottom opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <span className="absolute right-0 top-0 flex size-14 items-center justify-center bg-teal text-snow transition-transform duration-500 group-hover:rotate-45 md:size-20">
+            <ArrowUpRight className="size-6 md:size-8" />
+          </span>
+          <span className="label absolute bottom-4 left-4 bg-graphite/85 backdrop-blur-xs px-3 py-1.5 text-paper/80 border border-line-dark/20">
+            {project.category}
+          </span>
+        </Link>
+
+        {/* Quick Gallery Lightbox Trigger */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openLightbox(galleryItems, 0);
+          }}
+          className="absolute left-4 top-4 z-10 flex items-center gap-1.5 border border-line-dark/60 bg-graphite/80 px-3 py-1.5 text-[0.68rem] font-mono uppercase tracking-widest text-paper backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 hover:border-teal hover:text-teal hover:bg-graphite cursor-pointer"
+          title="Open interactive photo gallery"
+        >
+          <Maximize2 className="size-3.5 text-teal" />
+          <span>Quick Gallery (4)</span>
+        </button>
+      </div>
       <div className="md:col-span-4 [direction:ltr]">
         <span className="font-display text-[clamp(4rem,10vw,8.5rem)] font-bold leading-none tracking-tighter text-transparent [-webkit-text-stroke:1px_var(--teal)]">
           {String(index + 1).padStart(2, "0")}
@@ -42,6 +77,18 @@ export function ProjectCanvas({ project, index }: { project: Project; index: num
             {project.title}
           </Link>
         </h3>
+        <div className="mt-4 flex items-center gap-4">
+          <Link to={`/projects/${project.slug}`} className="btn-line text-sm text-paper hover:text-teal">
+            Project Story <ArrowUpRight className="size-3.5" />
+          </Link>
+          <button
+            type="button"
+            onClick={() => openLightbox(galleryItems, 0)}
+            className="flex items-center gap-1.5 font-mono text-[0.72rem] uppercase tracking-wider text-teal hover:text-paper transition-colors cursor-pointer"
+          >
+            <Maximize2 className="size-3" /> View Photos ({galleryItems.length})
+          </button>
+        </div>
       </div>
     </Reveal>
   );

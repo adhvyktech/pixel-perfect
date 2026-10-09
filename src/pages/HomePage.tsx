@@ -6,6 +6,7 @@ import { FeaturedProjects, ServiceIndex, Process, Capabilities } from "@/compone
 import { Closing } from "@/components/site/Closing";
 import { Reveal, Label } from "@/components/site/Reveal";
 import { DotDiamond } from "@/components/site/Dots";
+import { GalleryImage } from "@/components/lightbox/GalleryImage";
 
 export function HomePage() {
   return (
@@ -112,13 +113,17 @@ function Studio() {
   return (
     <section className="grid bg-paper md:grid-cols-12 border-t border-border">
       <div className="relative min-h-[60vh] md:col-span-6 overflow-hidden bg-stone-light">
-        <img
+        <GalleryImage
           src={deviBalaPortrait}
           alt="Devi Bala — Founder & Principal Designer of D’Dezignz Interiors"
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 hover:scale-[1.02]"
+          itemTitle="Devi Bala — Founder & Principal Designer"
+          category="Studio Leadership"
+          caption="Devi Bala — Leading bespoke residential design & craft execution in Bengaluru."
+          badgeLabel="Inspect Portrait"
+          className="h-full w-full object-cover object-top"
+          wrapperClassName="h-full min-h-[60vh]"
         />
-        <div className="absolute bottom-0 inset-x-0 bg-graphite/90 backdrop-blur-xs p-5 md:p-6 text-paper border-t border-line-dark/20">
+        <div className="absolute bottom-0 inset-x-0 bg-graphite/90 backdrop-blur-xs p-5 md:p-6 text-paper border-t border-line-dark/20 pointer-events-none">
           <p className="label text-teal">Founder & Principal Designer</p>
           <p className="font-display text-lg text-paper mt-0.5">Devi Bala</p>
         </div>

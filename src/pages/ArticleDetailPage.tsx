@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { articles, imageOf } from "@/content/site";
 import { Closing } from "@/components/site/Closing";
+import { GalleryImage } from "@/components/lightbox/GalleryImage";
 
 export function ArticleDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -29,9 +30,13 @@ export function ArticleDetailPage() {
         </header>
 
         <div className="relative aspect-[21/9] w-full overflow-hidden bg-graphite">
-          <img
+          <GalleryImage
             src={imageOf(article.cover)}
             alt={article.title}
+            itemTitle={article.title}
+            category={article.category}
+            caption={`Editorial photography for ${article.title}.`}
+            badgeLabel="Inspect Photo"
             className="h-full w-full object-cover"
           />
         </div>
